@@ -1,0 +1,42 @@
+html {
+  margin: 0;
+}
+
+p {
+  max-width: 200px;
+}
+
+#demo {
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+#overpull {
+  background: teal;
+  position: fixed;
+  bottom: 0;
+  height: 0;
+  right: 0;
+  left: 0;
+  margin: 0 auto;
+  color: #fff;
+  max-height: 200px;
+  transition: max-height 2s ease-out;
+}
+
+#msg {
+  position: fixed;
+  bottom: 0;
+  transform: translateY(0);
+  right: 0; left: 0;
+  margin: 0 auto;
+  opacity: 0;
+  transition: all 0.3s;
+  text-align: center;
+}
+
+#msg.show {
+  opacity: 1;
+  transform: translateY(-10px);
+}
