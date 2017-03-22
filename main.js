@@ -7,6 +7,7 @@ var maxH = 200;
 pull.style.maxHeight = maxH + 'px';
 
 var info = document.getElementById('info');
+info.innerHTML = wHeight;
 
 var pullToggle = true;
 
