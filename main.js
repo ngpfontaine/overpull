@@ -18,6 +18,7 @@ window.onscroll = function(ev) {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {       
     document.addEventListener(touchEvDown, function foo(e) {
       pullTouchOn(e);
+      cursorClickOffset = wHeight-e.touches[0].clientY;
       info.innerHTML = 'touchEvDown';
     });
     document.addEventListener(touchEvUp, pullTouchOff);
@@ -25,7 +26,6 @@ window.onscroll = function(ev) {
 };
   
 function pullTouchOn(e) {
-  cursorClickOffset = wHeight-e.clientY;
   pullToggle = true;
   document.addEventListener(touchEvMove,function foo(e) {
     pullHeight(e,pullToggle);
