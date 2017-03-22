@@ -3,7 +3,7 @@ var msg = document.getElementById('msg');
 var height = pull.clientHeight;
 var cursorClickOffset = 0;
 wHeight = window.outerHeight;
-var maxH = 200;
+var maxH = 120;
 pull.style.maxHeight = maxH + 'px';
 
 var info = document.getElementById('info');
@@ -20,7 +20,6 @@ window.onscroll = function(ev) {
     document.addEventListener(touchEvDown, function foo(e) {
       pullTouchOn(e);
       cursorClickOffset = wHeight-(e.targetTouches[0].pageY);
-      info.innerHTML = 'cursorClickOffset = ' + cursorClickOffset + ' ' + e.targetTouches[0].pageY;
     });
     document.addEventListener(touchEvUp, pullTouchOff);
   }
@@ -30,7 +29,6 @@ function pullTouchOn(e) {
   pullToggle = true;
   document.addEventListener(touchEvMove,function foo(e) {
     pullHeight(e,pullToggle);
-    // info.innerHTML = 'touchEvMove';
   });
   pull.style.transition = 'none';
 }
@@ -40,7 +38,6 @@ function pullTouchOff() {
   pullToggle = false;
   document.removeEventListener(touchEvMove, function(e) {
     pullHeight(e,pullToggle);
-    info.innerHTML = 'touchEvMove';
   });
   pull.style.transition = 'height 0.25s ease-in';
   pull.style.height = height + 'px';
@@ -50,7 +47,6 @@ function pullTouchOff() {
 function pullHeight(inp,trueFalse) {
   if (trueFalse) {
     var pullHeightZeroed = (window.outerHeight-inp.targetTouches[0].pageY)-cursorClickOffset;
-    info.innerHTML = 'pullHeight() ' + pullHeightZeroed;
     overpull.style.height = pullHeightZeroed + 'px';
     if (pullHeightZeroed > (maxH-20)) {
       // pull.style.maxHeight = (maxH+10) + 'px';
