@@ -50,7 +50,7 @@ function pullHeight(inp,trueFalse) {
   if (trueFalse) {
     var pullHeightZeroed = (window.outerHeight-inp.targetTouches[0].pageY)-cursorClickOffset;
     overpull.style.height = pullHeightZeroed/2 + 'px';
-    if (pullHeightZeroed*2 > (maxH-20)) {
+    if (pullHeightZeroed > (maxH-20)) {
       // pull.style.maxHeight = (maxH+10) + 'px';
       pull.style.minHeight = '40px';
       msg.classList.add('show');
