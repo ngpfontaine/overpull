@@ -6,9 +6,6 @@ wHeight = window.outerHeight;
 var maxH = 120;
 pull.style.maxHeight = maxH + 'px';
 
-var info = document.getElementById('info');
-info.innerHTML = wHeight;
-
 var pullToggle = true;
 
 var touchEvDown = 'ontouchstart' in window ? 'touchstart' : 'mousedown';
@@ -36,7 +33,6 @@ function pullTouchOn(e) {
 }
 
 function pullTouchOff() {
-  info.innerHTML = 'pullTouchOff()';
   pullToggle = false;
   document.removeEventListener(touchEvMove, function(e) {
     pullHeight(e,pullToggle);
@@ -50,7 +46,7 @@ function pullHeight(inp,trueFalse) {
   if (trueFalse) {
     var pullHeightZeroed = (window.outerHeight-inp.targetTouches[0].pageY)-cursorClickOffset;
     overpull.style.height = pullHeightZeroed/2 + 'px';
-    if (pullHeightZeroed > (maxH-20)) {
+    if ((pullHeightZeroed*2/3) > (maxH-20)) {
       // pull.style.maxHeight = (maxH+10) + 'px';
       pull.style.minHeight = '40px';
       msg.classList.add('show');
