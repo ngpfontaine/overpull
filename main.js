@@ -19,8 +19,8 @@ window.onscroll = function(ev) {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {       
     document.addEventListener(touchEvDown, function foo(e) {
       pullTouchOn(e);
-      cursorClickOffset = wHeight-e.clientY;
-      info.innerHTML = 'cursorClickOffset = ' + cursorClickOffset + ' ' + e.clientY;
+      cursorClickOffset = wHeight-(e.targetTouches[0].pageY);
+      info.innerHTML = 'cursorClickOffset = ' + cursorClickOffset + ' ' + e.targetTouches[0].pageY;
     });
     document.addEventListener(touchEvUp, pullTouchOff);
   }
@@ -49,7 +49,7 @@ function pullTouchOff() {
 
 function pullHeight(inp,trueFalse) {
   if (trueFalse) {
-    var pullHeightZeroed = (window.outerHeight-inp.clientY)-cursorClickOffset;
+    var pullHeightZeroed = (window.outerHeight-inp.targetTouches[0].pageY)-cursorClickOffset;
     info.innerHTML = 'pullHeight() ' + pullHeightZeroed;
     overpull.style.height = pullHeightZeroed + 'px';
     if (pullHeightZeroed > (maxH-20)) {
