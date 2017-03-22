@@ -18,7 +18,7 @@ window.onscroll = function(ev) {
   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {       
     document.addEventListener(touchEvDown, function foo(e) {
       pullTouchOn(e);
-      cursorClickOffset = wHeight-e.touches[0].clientY;
+      cursorClickOffset = wHeight-e.clientY;
       info.innerHTML = 'touchEvDown';
     });
     document.addEventListener(touchEvUp, pullTouchOff);
@@ -29,7 +29,7 @@ function pullTouchOn(e) {
   pullToggle = true;
   document.addEventListener(touchEvMove,function foo(e) {
     pullHeight(e,pullToggle);
-    info.innerHTML = 'touchEvMove';
+    // info.innerHTML = 'touchEvMove';
   });
   pull.style.transition = 'none';
 }
@@ -47,9 +47,9 @@ function pullTouchOff() {
 }
 
 function pullHeight(inp,trueFalse) {
-  info.innerHTML = 'pullHeight()';
   if (trueFalse) {
     var pullHeightZeroed = window.innerHeight-inp.clientY-cursorClickOffset;
+    info.innerHTML = 'pullHeight() ' + pullHeightZeroed;
     overpull.style.height = pullHeightZeroed + 'px';
     if (pullHeightZeroed > (maxH-20)) {
       // pull.style.maxHeight = (maxH+10) + 'px';
