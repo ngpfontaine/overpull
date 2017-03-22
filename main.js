@@ -2,7 +2,7 @@ var pull = document.getElementById('overpull');
 var msg = document.getElementById('msg');
 var height = pull.clientHeight;
 var cursorClickOffset = 0;
-wHeight = window.innerHeight;
+wHeight = window.outerHeight;
 var maxH = 200;
 pull.style.maxHeight = maxH + 'px';
 
@@ -48,7 +48,7 @@ function pullTouchOff() {
 
 function pullHeight(inp,trueFalse) {
   if (trueFalse) {
-    var pullHeightZeroed = window.innerHeight-inp.clientY-cursorClickOffset;
+    var pullHeightZeroed = window.outerHeight-inp.clientY-cursorClickOffset;
     info.innerHTML = 'pullHeight() ' + pullHeightZeroed;
     overpull.style.height = pullHeightZeroed + 'px';
     if (pullHeightZeroed > (maxH-20)) {
