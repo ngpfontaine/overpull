@@ -26,6 +26,7 @@ window.onscroll = function(ev) {
   }
   // DISABLE/REMOVE EVENTS
   else {
+    pullToggle = false;
     document.removeEventListener(touchEvDown, pullOnHandler);
     document.removeEventListener(touchEvUp, pullOffHandler);
   }
