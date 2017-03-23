@@ -20,14 +20,14 @@ var mobile = 'ontouchstart' in window ? true : false;
 // if (mobile) {
 window.onscroll = function(ev) {
   // SCROLLED TO BOTTOM, ENABLE
-  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {       
+  if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
     document.addEventListener(touchEvDown, pullOnHandler);
-    document.addEventListener(touchEvUp, pullTouchOff);
+    document.addEventListener(touchEvUp, pullOffHandler);
   }
   // DISABLE/REMOVE EVENTS
   else {
     document.removeEventListener(touchEvDown, pullOnHandler);
-    document.removeEventListener(touchEvUp, pullTouchOff);
+    document.removeEventListener(touchEvUp, pullOffHandler);
   }
 };
 // }
@@ -40,10 +40,10 @@ var pullOnHandler = function(e) {
     pullHeight(e,pullToggle);
   });
   cursorClickOffset = mobile ? wHeight-(e.targetTouches[0].pageY) : wHeight-(e.clientY);
-}
+};
 
 // INPUT RELEASE
-function pullTouchOff() {
+var pullOffHandler = function(e) {
   pullToggle = false;
   document.removeEventListener(touchEvMove, function(e) {
     pullHeight(e,pullToggle);
@@ -55,7 +55,7 @@ function pullTouchOff() {
   if (pullSuccess) {
     pull.style.transform = 'translateY(-40px)';
   }
-}
+};
 
 function pullHeight(inp,trueFalse) {
   if (trueFalse) {
