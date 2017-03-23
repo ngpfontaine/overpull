@@ -54,7 +54,9 @@ function pullTouchOff() {
 function pullHeight(inp,trueFalse) {
   if (trueFalse) {
     var pullHeightZeroed = mobile ? (window.outerHeight-inp.targetTouches[0].pageY)-cursorClickOffset : (window.outerHeight-inp.clientY)-cursorClickOffset;
-    overpull.style.transform = 'translateY(-' + (pullHeightZeroed/2) + 'px)';
+    if (pullHeightZeroed/2 < maxH) {
+      overpull.style.transform = 'translateY(-' + (pullHeightZeroed/2) + 'px)';
+    }
     // overpull.style.height = (pullHeightZeroed/2) + 'px';
     if ((pullHeightZeroed*2/3) > (maxH-20)) {
       pull.style.minHeight = '40px';
