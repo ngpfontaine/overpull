@@ -5,10 +5,11 @@ var cursorClickOffset = 0;
 wHeight = window.outerHeight;
 
 var maxH = 120;
-pull.style.maxHeight = maxH + 'px';
+// pull.style.maxHeight = maxH + 'px';
 
 // TOGGLE DISABLE FOR TOUCHEND
 var pullToggle = true;
+var pullSuccess = false;
 
 var touchEvDown = 'ontouchstart' in window ? 'touchstart' : 'mousedown';
 var touchEvUp = 'ontouchend' in window ? 'touchend' : 'mouseup';
@@ -41,17 +42,24 @@ function pullTouchOff() {
   document.removeEventListener(touchEvMove, function(e) {
     pullHeight(e,pullToggle);
   });
-  pull.style.transition = 'height 0.25s ease-in';
-  pull.style.height = height + 'px';
+  // pull.style.transition = 'height 0.25s ease-in';
+  // pull.style.height = height + 'px';
+  pull.style.transition = 'transform 0.25s ease-in';
+  pull.style.transform = 'translateY(0)';
+  if (pullSuccess) {
+    pull.style.transform = 'translateY(-40px)';
+  }
 }
 
 function pullHeight(inp,trueFalse) {
   if (trueFalse) {
     var pullHeightZeroed = mobile ? (window.outerHeight-inp.targetTouches[0].pageY)-cursorClickOffset : (window.outerHeight-inp.clientY)-cursorClickOffset;
-    overpull.style.height = (pullHeightZeroed/2) + 'px';
+    overpull.style.transform = 'translateY(-' + (pullHeightZeroed/2) + 'px)';
+    // overpull.style.height = (pullHeightZeroed/2) + 'px';
     if ((pullHeightZeroed*2/3) > (maxH-20)) {
       pull.style.minHeight = '40px';
       msg.classList.add('show');
+      pullSuccess = true;
     }
   }
 }

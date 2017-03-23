@@ -3,7 +3,6 @@ html {
 }
 
 p {
-  /*max-width: 200px;*/
   margin-bottom: 30px;
 }
 
@@ -17,12 +16,14 @@ p {
   background: teal;
   position: fixed;
   bottom: 0;
-  height: 0;
+  height: 1px;
   right: 0;
   left: 0;
   margin: 0 auto;
   color: #fff;
   transition: max-height 2s ease-out;
+  height: 100%;
+  top: 100%;
 }
 
 #overpull-msg {
@@ -34,6 +35,8 @@ p {
   opacity: 0;
   transition: all 0.3s;
   text-align: center;
+  transform: translate(0,0);
+  color: #fff;
 }
 
 #overpull-msg.show {
