@@ -68,7 +68,7 @@ function pullHeight(inp,trueFalse) {
     if (pullHeightZeroed/2 < maxH) {
       var algPull = pullHeightZeroed/(maxH*2);
       if (algPull < 0.3) { algPull = 0.3; }
-      document.getElementById('demo').innerHTML = algPull;
+      // document.getElementById('demo').innerHTML = algPull;
       overpull.style.opacity = algPull;
       overpull.style.transform = 'translateY(-' + (pullHeightZeroed/2) + 'px)';
     }
