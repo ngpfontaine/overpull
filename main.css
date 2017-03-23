@@ -24,6 +24,7 @@ p {
   transition: max-height 2s ease-out;
   height: 100%;
   top: 100%;
+  opacity: 0.3;
 }
 
 #overpull-msg {

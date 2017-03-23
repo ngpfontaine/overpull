@@ -66,6 +66,10 @@ function pullHeight(inp,trueFalse) {
       (window.outerHeight-inp.clientY)-cursorClickOffset;
     // LIMIT DRAG DISTANCE, & TRANSLATE BY HALF
     if (pullHeightZeroed/2 < maxH) {
+      var algPull = pullHeightZeroed/(maxH*2);
+      if (algPull < 0.3) { algPull = 0.3; }
+      document.getElementById('demo').innerHTML = algPull;
+      overpull.style.opacity = algPull;
       overpull.style.transform = 'translateY(-' + (pullHeightZeroed/2) + 'px)';
     }
     // TRIGGER W/ A LITTLE EXTRA ROOM TO SPARE
