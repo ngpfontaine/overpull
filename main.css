@@ -3,7 +3,8 @@ html {
 }
 
 p {
-  max-width: 200px;
+  /*max-width: 200px;*/
+  margin-bottom: 30px;
 }
 
 #info {
@@ -21,11 +22,10 @@ p {
   left: 0;
   margin: 0 auto;
   color: #fff;
-  /*max-height: 200px;*/
   transition: max-height 2s ease-out;
 }
 
-#msg {
+#overpull-msg {
   position: fixed;
   bottom: 0;
   transform: translateY(0);
@@ -36,7 +36,7 @@ p {
   text-align: center;
 }
 
-#msg.show {
+#overpull-msg.show {
   opacity: 1;
   transform: translateY(-10px);
 }
