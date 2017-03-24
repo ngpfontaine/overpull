@@ -55,6 +55,10 @@ var pullOffHandler = function(e) {
   
   if (pullSuccess) {
     pull.style.transform = 'translateY(-40px)';
+    cursorClickOffset = 0;
+    
+    // PUT STATE CHANGE FUNCTION HERE TO TRIGGER ON RELEASE
+    
   }
 };
 
@@ -68,15 +72,16 @@ function pullHeight(inp,trueFalse) {
     if (pullHeightZeroed/2 < maxH) {
       var algPull = pullHeightZeroed/(maxH*2);
       if (algPull < 0.3) { algPull = 0.3; }
-      // document.getElementById('demo').innerHTML = algPull;
       overpull.style.opacity = algPull;
       overpull.style.transform = 'translateY(-' + (pullHeightZeroed/2) + 'px)';
     }
     // TRIGGER W/ A LITTLE EXTRA ROOM TO SPARE
     if ((pullHeightZeroed*2/3) > maxH) {
-      pull.style.minHeight = '40px';
       msg.classList.add('show');
       pullSuccess = true;
+      
+      // PUT STATE CHANGE FUNCTION HERE FOR IMMEDIATE
+      
     }
   }
 }
